@@ -112,3 +112,43 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const infoCard = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+  // Create elements
+  const html = document.createElement('html');
+  const head = document.createElement('head');
+  const name = document.createElement('title');
+  const link1 = document.createElement('link')
+  const menu = document.createElement('script');
+  const article = document.createElement('script');
+  const body = document.createElement('body');
+  const headerText = document. createAttribute('div');
+  const image = document.createElement('img');
+  const LSNewsfeed = document.createElement('h1')
+  const articles = document.createElement('div')
+
+  // buid tree
+  html.appendChild(head);
+  html.appendChild(body);
+
+  head.appendChild(name);
+  head.appendChild(link1);
+  head.appendChild(menu);
+  head.appendChild(article)
+
+  body.appendChild(headerText);
+  body.appendChild(articles);
+
+  header.appendChild(image);
+  header.appendChild(LSNewsfeed)
+
+  //set class names
+  header.classList.add('header');
+  image.classList.add('menu-button');
+  
+
+
+
+
+
+}
