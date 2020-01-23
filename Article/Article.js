@@ -85,6 +85,29 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Professional Software Development in 2019',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'The struggle of being a musician and learning to code is REAL',
+    date: 'today...everyday....all the time really.',
+    firstParagraph: 'something about creativity and how coding is only creative within the shores of a certain ocean',
+    secondParagraph: 'Something about your brain focus being absolutely central to success....but knowing musicians are big low attention span idiots... for the most part.',
+    thirdParagraph: 'Someting about how problem solving is key to production and codeing and developement are very similar.'
   }
 ];
 
@@ -112,3 +135,47 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const cardInfo = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+
+  const articleText = document.createElement('div');
+  const header = document.createElement('h2');
+  header.textContent = title;
+  const dateInfo = document.createElement('p')
+  dateInfo.textContent = date;
+  const paraOne = document.createElement('p');
+  paraOne.textContent = firstParagraph;
+  const paraTwo = document.createElement('p');
+  paraTwo.textContent = secondParagraph;
+  const paraThree = document.createElement('p');
+  paraThree.textContent = thirdParagraph;
+  const expand = document.createElement('span');
+  expand.textContent = 'expand'
+
+  articleText.appendChild(header);
+  articleText.appendChild(dateInfo);
+  articleText.appendChild(paraOne);
+  articleText.appendChild(paraTwo);
+  articleText.appendChild(paraThree);
+  articleText.appendChild(expand);
+
+  articleText.classList.add('article');
+  dateInfo.classList.add('date');
+  expand.classList.add('expandButton');
+
+  expand.addEventListener('click', () => {
+    articleText.classList.toggle('article-open')
+
+  })
+
+return articleText
+};
+
+const parent = document.querySelector('.articles');
+
+data.forEach(element => {
+  const newThing = cardInfo(element.title, element.date, element.firstParagraph, element.secondParagraph,element.thirdParagraph)
+
+parent.appendChild(newThing)
+  
+});
