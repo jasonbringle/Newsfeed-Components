@@ -85,6 +85,29 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Professional Software Development in 2019',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'The struggle of being a musician and learning to code is REAL',
+    date: 'today...everyday....all the time really.',
+    firstParagraph: 'something about creativity and how coding is only creative within the shores of a certain ocean',
+    secondParagraph: 'Something about your brain focus being absolutely central to success....but knowing musicians are big low attention span idiots... for the most part.',
+    thirdParagraph: 'Someting about how problem solving is key to production and codeing and developement are very similar.'
   }
 ];
 
@@ -113,42 +136,46 @@ const data = [
 
 */
 
-const infoCard = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
-  // Create elements
-  const html = document.createElement('html');
-  const head = document.createElement('head');
-  const name = document.createElement('title');
-  const link1 = document.createElement('link')
-  const menu = document.createElement('script');
-  const article = document.createElement('script');
-  const body = document.createElement('body');
-  const headerText = document. createAttribute('div');
-  const image = document.createElement('img');
-  const LSNewsfeed = document.createElement('h1')
-  const articles = document.createElement('div')
+const cardInfo = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
 
-  // buid tree
-  html.appendChild(head);
-  html.appendChild(body);
+  const articleText = document.createElement('div');
+  const header = document.createElement('h2');
+  header.textContent = title;
+  const dateInfo = document.createElement('p')
+  dateInfo.textContent = date;
+  const paraOne = document.createElement('p');
+  paraOne.textContent = firstParagraph;
+  const paraTwo = document.createElement('p');
+  paraTwo.textContent = secondParagraph;
+  const paraThree = document.createElement('p');
+  paraThree.textContent = thirdParagraph;
+  const expand = document.createElement('span');
+  expand.textContent = 'expand'
 
-  head.appendChild(name);
-  head.appendChild(link1);
-  head.appendChild(menu);
-  head.appendChild(article)
+  articleText.appendChild(header);
+  articleText.appendChild(dateInfo);
+  articleText.appendChild(paraOne);
+  articleText.appendChild(paraTwo);
+  articleText.appendChild(paraThree);
+  articleText.appendChild(expand);
 
-  body.appendChild(headerText);
-  body.appendChild(articles);
+  articleText.classList.add('article');
+  dateInfo.classList.add('date');
+  expand.classList.add('expandButton');
 
-  header.appendChild(image);
-  header.appendChild(LSNewsfeed)
+  expand.addEventListener('click', () => {
+    articleText.classList.toggle('article-open')
 
-  //set class names
-  header.classList.add('header');
-  image.classList.add('menu-button');
+  })
+
+return articleText
+};
+
+const parent = document.querySelector('.articles');
+
+data.forEach(element => {
+  const newThing = cardInfo(element.title, element.date, element.firstParagraph, element.secondParagraph,element.thirdParagraph)
+
+parent.appendChild(newThing)
   
-
-
-
-
-
-}
+});
